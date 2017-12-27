@@ -1,0 +1,14 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="lzm.jiyun.com.xiongmaopindao.fragment.zbfragment.zb_LiveFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.androidkun.PullToRefreshRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zg_tong"></com.androidkun.PullToRefreshRecyclerView>
+</LinearLayout>

@@ -89,6 +89,21 @@ public abstract class BaseAdapter<M> extends RecyclerView.Adapter<BaseAdapter.My
         public void setImage(int id,String value){
             Glide.with(context).load(value).into((ImageView)getView(id));
         }
+        public void setImageBen(int id,int value){
+            ((ImageView)getView(id)).setImageResource(value);
+        }
+        public void setVstext(int id){
+            ((TextView)getView(id)).setVisibility(View.GONE);
+        }
+        public void setVstextXian(int id){
+            ((TextView)getView(id)).setVisibility(View.VISIBLE);
+        }
+        public void setVsimage(int id){
+            ((ImageView)getView(id)).setVisibility(View.GONE);
+        }
+        public void setonlikelist(int id, View.OnClickListener onClickListener){
+            ((ImageView)getView(id)).setOnClickListener(onClickListener);
+        }
         public View getItemView(){
             return mView;
         }

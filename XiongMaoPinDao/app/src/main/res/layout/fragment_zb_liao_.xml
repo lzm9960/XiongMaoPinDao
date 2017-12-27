@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="lzm.jiyun.com.xiongmaopindao.fragment.zbfragment.bfragment.ZbLiao_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y135"
+        android:layout_weight="1"
+        android:hint="添加评论..."
+        android:textColorHint="#CACACA"
+        android:layout_margin="5dp"
+        android:id="@+id/zbliao_ed" />
+        <Button
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/y135"
+            android:layout_margin="5dp"
+            android:textColor="#FFF"
+            android:gravity="center"
+            android:text="发送"
+            android:id="@+id/zbliao_but"
+            android:background="#1F539E"/>
+    </LinearLayout>
+<com.androidkun.PullToRefreshRecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/zbliao_pullrecy"></com.androidkun.PullToRefreshRecyclerView>
+</LinearLayout>

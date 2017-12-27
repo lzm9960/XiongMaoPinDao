@@ -3,6 +3,7 @@ package lzm.jiyun.com.xiongmaopindao;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class MainActivity extends BaseActivity<NetPresenter, NetModel> implement
     private TextView bb_img;
     private TextView zg_img;
     private View views;
+    private boolean isQuit = false;
 
     @Override
     public int getLayoutId() {
@@ -108,6 +110,7 @@ public class MainActivity extends BaseActivity<NetPresenter, NetModel> implement
         setToo_img2(R.mipmap.hudong_sign);
         setToo_img3(R.mipmap.person_sign);
         pager.setCurrentItem(0);
+        pager.setOffscreenPageLimit(4);
         sy_img = (TextView) findViewById(R.id.sy_img);
         zb_img = (TextView) findViewById(R.id.zb_img);
         gg_img = (TextView) findViewById(R.id.gg_img);
@@ -120,5 +123,32 @@ public class MainActivity extends BaseActivity<NetPresenter, NetModel> implement
     public void view_Method(ArrayList<Fragment> fragments) {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         pager.setAdapter(fragmentAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!isQuit) {
+            Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            isQuit = true;
+
+            //这段代码意思是,在两秒钟之后isQuit会变成false
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+
+                    } finally {
+                        isQuit = false;
+                    }
+                }
+            }).start();
+
+
+        } else {
+            System.exit(0);
+        }
     }
 }

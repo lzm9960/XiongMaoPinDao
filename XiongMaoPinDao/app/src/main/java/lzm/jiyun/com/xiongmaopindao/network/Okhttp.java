@@ -32,7 +32,7 @@ public class Okhttp {
               call.enqueue(new Callback() {
                   @Override
                   public void onFailure(Call call, IOException e) {
-
+                      System.out.println("========="+"请求网络失败");
                   }
 
                   @Override

@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E5EA"
+    android:orientation="vertical"
+    tools:context="lzm.jiyun.com.xiongmaopindao.fragment.zbfragment.zb_LiveFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y800"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/zblive_img1"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="@dimen/y800" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_playvideo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[正在直播]"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/zblive_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="简介" />
+
+        <ImageView
+            android:id="@+id/zblive_img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/live_china_detail_down" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="2dp"
+    android:background="#FFFFFF">
+    <TextView
+        android:id="@+id/zblive_te1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y3"
+        android:background="#E0E5EA"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/zblive_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/zblive_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="#1E539C"
+            app:tabSelectedTextColor="#1E539C"
+            app:tabTextColor="#000000"></android.support.design.widget.TabLayout>
+
+        <lzm.jiyun.com.xiongmaopindao.adapter.NoScrollViewPager
+            android:id="@+id/zblive_pager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y900">
+        </lzm.jiyun.com.xiongmaopindao.adapter.NoScrollViewPager>
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

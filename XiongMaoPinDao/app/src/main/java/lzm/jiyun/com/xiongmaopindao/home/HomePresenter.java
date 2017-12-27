@@ -6,7 +6,7 @@ package lzm.jiyun.com.xiongmaopindao.home;
 public class HomePresenter extends HomeContract.Presenter{
 
     @Override
-    public void presenter_Method(String url) {
+    public void presenter_Method( String url) {
         baseModel.model_Method(url,new HomeMp() {
             @Override
             public void home_Method(String string) {

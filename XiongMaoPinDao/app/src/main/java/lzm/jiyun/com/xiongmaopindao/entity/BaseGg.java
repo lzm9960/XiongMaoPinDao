@@ -7,11 +7,11 @@ import java.util.List;
  */
 
 public class BaseGg {
-    private List<ListBean> list;
+        private List<ListBean> list;
 
-    public List<ListBean> getList() {
-        return list;
-    }
+        public List<ListBean> getList() {
+            return list;
+        }
 
     public void setList(List<ListBean> list) {
         this.list = list;

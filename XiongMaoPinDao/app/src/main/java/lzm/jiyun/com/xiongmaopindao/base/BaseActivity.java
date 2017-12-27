@@ -1,7 +1,11 @@
 package lzm.jiyun.com.xiongmaopindao.base;
 
+import android.Manifest;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.umeng.socialize.UMShareAPI;
 
 import lzm.jiyun.com.xiongmaopindao.R;
 import lzm.jiyun.com.xiongmaopindao.utlis.Apps;
@@ -36,6 +42,10 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         super.setContentView(R.layout.title_activity);
         Apps.baseActivity=this;
+        if(Build.VERSION.SDK_INT>=23){
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this,mPermissionList,123);
+        }
 //        setContentView(getLayoutId());
         initViews();
         mPresenter = TUtils.getT(this, 0);
@@ -76,6 +86,13 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
 
     public void setToo_img2(int imgs2) {
         too_img2.setImageResource(imgs2);
+        too_img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(BaseActivity.this, Interaction.class));
+            }
+        });
+
     }
 
     public void setToo_img3(int imgs3) {
@@ -94,5 +111,10 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         too = (Toolbar) findViewById(R.id.too);
         too.setTitle("");
         setSupportActionBar(too);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }

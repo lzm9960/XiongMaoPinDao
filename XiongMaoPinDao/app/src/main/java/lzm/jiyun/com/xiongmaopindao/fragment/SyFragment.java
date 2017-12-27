@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lzm.jiyun.com.xiongmaopindao.R;
-import lzm.jiyun.com.xiongmaopindao.adapter.Sy_GungAdapter;
-import lzm.jiyun.com.xiongmaopindao.adapter.Sy_XinCAdapter;
-import lzm.jiyun.com.xiongmaopindao.adapter.Sy_YikAdapter;
-import lzm.jiyun.com.xiongmaopindao.adapter.Sy_ZhongGAdapter;
+import lzm.jiyun.com.xiongmaopindao.adapter.syadapter.Sy_GungAdapter;
+import lzm.jiyun.com.xiongmaopindao.adapter.syadapter.Sy_XinCAdapter;
+import lzm.jiyun.com.xiongmaopindao.adapter.syadapter.Sy_YikAdapter;
+import lzm.jiyun.com.xiongmaopindao.adapter.syadapter.Sy_ZhongGAdapter;
 import lzm.jiyun.com.xiongmaopindao.base.BaseFragment;
 import lzm.jiyun.com.xiongmaopindao.entity.Base;
 import lzm.jiyun.com.xiongmaopindao.entity.BaseGg;
@@ -51,15 +51,15 @@ public class SyFragment extends BaseFragment<HomePresenter, HomeModel> implement
     private RecyclerView sy_recyGg;
     private RecyclerView sy_recyZg;
     private String image;
-    private TextView bannerTitle;
+//    private TextView bannerTitle;
     private String listUrl;
     private SwipeRefreshLayout swi;
+    private List<String> imaglist;
+    private List<String> imaglists;
 
     public SyFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     protected void initView(View view) {
         sy_banner = (Banner) view.findViewById(R.id.sy_banner);
@@ -72,7 +72,6 @@ public class SyFragment extends BaseFragment<HomePresenter, HomeModel> implement
         sy_recyYk = (RecyclerView) view.findViewById(R.id.sy_recyYk);
         sy_recyGg = (RecyclerView) view.findViewById(R.id.sy_recyGg);
         sy_recyZg = (RecyclerView) view.findViewById(R.id.sy_recyZg);
-        bannerTitle = (TextView) view.findViewById(R.id.sy_titles);
         swi = (SwipeRefreshLayout) view.findViewById(R.id.swi);
         mPresenter.presenter_Method("http://www.ipanda.com/kehuduan/shouye/index.json");
     }
@@ -93,23 +92,32 @@ public class SyFragment extends BaseFragment<HomePresenter, HomeModel> implement
         return R.layout.fragment_sy;
     }
 
+//    @Override
+//    protected void LanJia() {
+//
+//    }
+
     @Override
     public void view_Method(String string) {
-        List<String> imaglist = new ArrayList<String>();
+        imaglist = new ArrayList<String>();
+        imaglists = new ArrayList<String>();
         Gson gson = new Gson();
         Base base = gson.fromJson(string, Base.class);
         List<Base.DataBean.BigImgBean> bigImg = base.getData().getBigImg();
         for (int i = 0; i < bigImg.size(); i++) {
             image = bigImg.get(i).getImage();
-            imaglist.add(image);
-            bannerTitle.setText(bigImg.get(i).getTitle());
+            imaglist.add(bigImg.get(i).getImage());
+            imaglists.add(bigImg.get(i).getTitle());
+
         }
         sy_banner.setImages(imaglist)//添加图片集合或图片url集合
+                .setBannerTitles(imaglists)
                 .setDelayTime(2000)//设置轮播时间
-                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)//指示器样式
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)//指示器样式
                 .setImageLoader(new GlideImage())//加载图片
                 .setIndicatorGravity(BannerConfig.RIGHT)//设置指示器位置
                 .start();
+
         initBoShi(base);
         initXinChang(base);
         initYiKe(base);
@@ -181,5 +189,4 @@ public class SyFragment extends BaseFragment<HomePresenter, HomeModel> implement
         sy_te_3.setText(items.get(1).getBrief());
         sy_te4.setText(items.get(1).getTitle());
     }
-
 }

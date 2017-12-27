@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y110"
+        android:background="#0328a1"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/main_imageView"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/y35"
+            android:src="@mipmap/panda_sign" />
+
+        <ImageView
+            android:id="@+id/main_imageView_JH"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x14"
+            android:layout_marginRight="@dimen/y15"
+            android:layout_toLeftOf="@+id/main_imageView_Login"
+            android:layout_toStartOf="@+id/main_imageView_Login"
+            android:src="@mipmap/hudong_sign" />
+
+        <ImageView
+            android:id="@+id/main_imageView_Login"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/main_imageView_JH"
+            android:layout_marginEnd="@dimen/y14"
+            android:layout_marginRight="@dimen/x14"
+            android:src="@mipmap/person_sign" />
+
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <RadioButton
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@mipmap/tab_home_normal"
+            android:gravity="center"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/tab_panda_eye_normal"
+            android:gravity="center"
+            android:text="熊猫直播" />
+
+        <RadioButton
+            android:id="@+id/btn3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/tab_panda_culture_normals"
+            android:gravity="center"
+            android:text="熊猫文化" />
+
+        <RadioButton
+            android:id="@+id/btn4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/tab_panda_live_normal"
+            android:gravity="center"
+            android:text="熊猫直播" />
+
+        <RadioButton
+            android:id="@+id/btn5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/tab_live_china_normal"
+            android:gravity="center"
+            android:text="直播中国"
+
+            />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/radio"
+        android:layout_below="@+id/relative"
+
+        ></FrameLayout>
+</RelativeLayout>
